@@ -1,3 +1,4 @@
+require 'chromedriver-screenshot/section'
 require 'chromedriver-screenshot/page'
 require 'chromedriver-screenshot/row'
 require 'chromedriver-screenshot/tile'
