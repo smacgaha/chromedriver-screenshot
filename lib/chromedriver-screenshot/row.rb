@@ -29,16 +29,13 @@ module ChromedriverScreenshot
       column_boundary_ary = []
 
       platform = ChromedriverScreenshot::Platforms.platform
-      columns, partial_column_width = platform.page_width.divmod platform.window_width
-      if partial_column_width > 0
-        # left column will be short if page width isnt a multiple of window width
-        column_boundary_ary << partial_column_width
-      end
 
-      (1..columns).each do |column|
-        column_boundary_ary << partial_column_width + column*platform.window_width
+      new_boundary = platform.window_width
+      while new_boundary < platform.window_width
+        column_boundary_ary << new_boundary
+        new_boundary += platform.window_width
       end
-      column_boundary_ary
+      column_boundary_ary << platform.page_width
     end
   end
 end

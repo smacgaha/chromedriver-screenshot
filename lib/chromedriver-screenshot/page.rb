@@ -21,16 +21,13 @@ module ChromedriverScreenshot
       row_boundary_ary = []
 
       platform = ChromedriverScreenshot::Platforms.platform
-      rows, partial_row_height = platform.page_height.divmod platform.window_height
-      if partial_row_height > 0
-        # top row will be short if page height isnt a multiple of window height
-        row_boundary_ary << partial_row_height
-      end
 
-      (1..rows).each do |row|
-        row_boundary_ary << partial_row_height + row*platform.window_height
+      new_boundary = platform.window_height
+      while new_boundary < platform.page_height
+        row_boundary_ary << new_boundary
+        new_boundary += platform.window_height
       end
-      row_boundary_ary
+      row_boundary_ary << platform.page_height
     end
   end
 end

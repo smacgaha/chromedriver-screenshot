@@ -21,7 +21,7 @@ describe ChromedriverScreenshot::Page do
 
     context "page height is not a multiple of window height" do
       let(:window_height) { 30 }
-      let(:expected_ary) { [10, 40, 70, 100] }
+      let(:expected_ary) { [30, 60, 90, 100] }
 
       it "returns partial boundaries" do
         subject
