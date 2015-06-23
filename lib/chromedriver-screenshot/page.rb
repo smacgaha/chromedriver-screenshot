@@ -1,36 +1,24 @@
 module ChromedriverScreenshot
-  class Page
+  class Page < Section
     def initialize
-      bounds = row_boundaries
-      @rows = Row.from_boundaries(bounds)
+      platform = ChromedriverScreenshot::Platforms.platform
+      boundaries = get_section_boundaries(platform.window_height, platform.page_height)
+      @subsections = rows_from_boundaries(row_boundaries)
     end
 
     def full_screenshot
-      screenshot = Magick::ImageList.new
-
-      @rows.each do |row|
-        screenshot.push(row.screenshot.append(false))
-      end
-
-      Base64::encode64(screenshot.append(true).to_blob)
+      Base64::encode64(super.append(true).to_blob)
     end
 
     private
 
-    def row_boundaries
-      row_boundary_ary = []
-
-      platform = ChromedriverScreenshot::Platforms.platform
-      rows, partial_row_height = platform.page_height.divmod platform.window_height
-      if partial_row_height > 0
-        # top row will be short if page height isnt a multiple of window height
-        row_boundary_ary << partial_row_height
+    def rows_from_boundaries(boundaries)
+      row_ary = []
+      boundaries.inject(0) do |row_top, row_bottom|
+        row_ary << Row.new(row_top, row_bottom)
+        row_bottom
       end
-
-      (1..rows).each do |row|
-        row_boundary_ary << partial_row_height + row*platform.window_height
-      end
-      row_boundary_ary
+      row_ary
     end
   end
 end
