@@ -24,6 +24,14 @@ module ChromedriverScreenshot
       @window_height ||= @bridge.getWindowSize.height
     end
 
+    def window_x
+      @bridge.executeScript("return window.scrollX")
+    end
+
+    def window_y
+      @bridge.executeScript("return window.scrollY")
+    end
+
     def screenshot
       @bridge.window_screenshot.unpack("m")[0]
     end
