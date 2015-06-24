@@ -17,11 +17,11 @@ module ChromedriverScreenshot
     end
 
     def window_width
-      @window_width ||= @bridge.getWindowSize.width
+      @window_width ||= @bridge.executeScript("return window.innerWidth")
     end
 
     def window_height
-      @window_height ||= @bridge.getWindowSize.height
+      @window_height ||= @bridge.executeScript("return window.innerHeight")
     end
 
     def window_x
