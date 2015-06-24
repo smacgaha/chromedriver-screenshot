@@ -18,9 +18,8 @@ module ChromedriverScreenshot
     def screenshot
       screenshot_blob = get_screenshot
       offset_x, offset_y = get_offset
-      screenshot = Magick::Image.from_blob(screenshot_blob).first
-      screenshot.crop!(offset_x, offset_y, @width, @height)
-      screenshot
+      screenshot = ChunkyPNG::Image.from_blob(screenshot_blob)
+      screenshot.crop(offset_x, offset_y, @width, @height)
     end
 
     private

@@ -4,7 +4,7 @@ describe ChromedriverScreenshot::Tile do
   context "#screenshot" do
     subject { new_tile.screenshot }
     before(:each) do
-      image_blob = Magick::Image.read("spec/support/fixtures/smiley_face.png").first.to_blob
+      image_blob = ChunkyPNG::Image.from_file("spec/support/fixtures/smiley_face.png").to_blob
       allow_any_instance_of(described_class).to receive(:get_screenshot).and_return(image_blob)
       allow_any_instance_of(described_class).to receive(:get_offset).and_return(offset)
     end
@@ -16,7 +16,7 @@ describe ChromedriverScreenshot::Tile do
         let(:new_tile) { described_class.new([0, 0], [180, 180]) }
 
         it "isn't cropped" do
-          expected = Magick::Image.read("spec/support/fixtures/smiley_face.png").first
+          expected = ChunkyPNG::Image.from_file("spec/support/fixtures/smiley_face.png")
           expect(subject <=> expected).to be 0
         end
       end
@@ -25,7 +25,7 @@ describe ChromedriverScreenshot::Tile do
         let(:new_tile) { described_class.new([0, 0], [120, 90]) }
 
         it "is cropped" do
-          expected = Magick::Image.read("spec/support/fixtures/cropped_smiley_face.png").first
+          expected = ChunkyPNG::Image.from_file("spec/support/fixtures/cropped_smiley_face.png")
           expect(subject <=> expected).to be 0
         end
       end
@@ -38,7 +38,7 @@ describe ChromedriverScreenshot::Tile do
         let(:new_tile) { described_class.new([0, 0], [160, 140]) }
 
         it "is cropped" do
-          expected = Magick::Image.read("spec/support/fixtures/offset_smiley_face.png").first
+          expected = ChunkyPNG::Image.from_file("spec/support/fixtures/offset_smiley_face.png")
           expect(subject <=> expected).to be 0
         end
       end
@@ -47,7 +47,7 @@ describe ChromedriverScreenshot::Tile do
         let(:new_tile) { described_class.new([0, 0], [120, 90]) }
 
         it "is cropped" do
-          expected = Magick::Image.read("spec/support/fixtures/offset_cropped_smiley_face.png").first
+          expected = ChunkyPNG::Image.from_file("spec/support/fixtures/offset_cropped_smiley_face.png")
           expect(subject <=> expected).to be 0
         end
       end

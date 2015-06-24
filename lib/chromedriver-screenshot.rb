@@ -2,7 +2,7 @@ require 'chromedriver-screenshot/page'
 require 'chromedriver-screenshot/row'
 require 'chromedriver-screenshot/tile'
 require 'chromedriver-screenshot/platforms'
-require "rmagick"
+require "oily_png"
 
 # really bad monkeypatching. fix this.
 module Selenium
