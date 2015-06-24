@@ -7,13 +7,17 @@ require "oily_png"
 # really bad monkeypatching. fix this.
 module Selenium
   module WebDriver
-    module Chrome
-      class Bridge < Remote::Bridge
+    module Remote
+      class Bridge
         alias_method :window_screenshot, :getScreenshot
         def getScreenshot
-          ChromedriverScreenshot::Platforms.create_platform(self)
-          page = ChromedriverScreenshot::Page.new
-          page.full_screenshot
+          if browser == :chrome
+            ChromedriverScreenshot::Platforms.create_platform(self)
+            page = ChromedriverScreenshot::Page.new
+            page.full_screenshot
+          else
+            window_screenshot
+          end
         end
       end
     end
