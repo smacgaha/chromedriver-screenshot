@@ -6,6 +6,7 @@ Gem::Specification.new do |s|
   s.version     = ChromedriverScreenshot::VERSION
   s.authors     = "Sean MacGahan"
   s.email       = "smacgaha@gmail.com"
+  s.homepage    = "http://github.com/smacgaha/chromedriver-screenshot"
   s.summary     = "Full-page screenshots for Chromedriver"
   s.description = "Full-page screenshots for Chrome in Selenium WebDriver"
   s.license     = "MIT"
