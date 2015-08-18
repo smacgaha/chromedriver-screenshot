@@ -3,8 +3,9 @@ require 'chromedriver-screenshot/row'
 require 'chromedriver-screenshot/tile'
 require 'chromedriver-screenshot/platforms'
 require "oily_png"
+require 'selenium-webdriver'
 
-# really bad monkeypatching. fix this.
+# really bad monkeypatching. fix this
 module Selenium
   module WebDriver
     module Remote
