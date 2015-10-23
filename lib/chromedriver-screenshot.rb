@@ -14,8 +14,10 @@ module Selenium
         def getScreenshot
           if browser == :chrome
             ChromedriverScreenshot::Platforms.create_platform(self)
-            page = ChromedriverScreenshot::Page.new
-            page.full_screenshot
+
+            screenshot = ChromedriverScreenshot::Page.new.full_screenshot
+            blob = screenshot.to_blob(:fast_rgb) # optimized for opaque images; greatly reduces runtime
+            Base64::encode64(blob)
           else
             window_screenshot
           end

@@ -7,6 +7,9 @@ module ChromedriverScreenshot
 
     def full_screenshot
       rows = @rows.map { |row| row.screenshot }
+
+      return rows.first if rows.size == 1 # don't need to process w/ Chunky
+
       page_height = rows.inject(0) do |height, row|
         height += row.height
       end
@@ -23,7 +26,7 @@ module ChromedriverScreenshot
         image_row += row.height
       end
 
-      Base64::encode64(screenshot.to_blob)
+      screenshot
     end
 
     private

@@ -12,6 +12,8 @@ module ChromedriverScreenshot
     def screenshot
       tiles = @tiles.map { |tile| tile.screenshot }
 
+      return tiles.first if tiles.count == 1 # don't need to process w/ Chunky
+
       row_width = tiles.inject(0) do |width, tile|
         width += tile.width
       end
