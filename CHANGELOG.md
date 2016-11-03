@@ -1,3 +1,11 @@
+## 0.2.4 (November 3, 2016)
+
+- Added suggested default settings for RSpec
+
+Bugs:
+  - Can now take screenshots of pages that are wider than the browser
+  - Screenshots no longer include the browser scrollbar
+
 ## 0.2.3 (October 23, 2015)
 
 Features:
