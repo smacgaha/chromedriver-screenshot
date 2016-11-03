@@ -1,6 +1,4 @@
-require "spec_helper"
-
-describe ChromedriverScreenshot::Tile do
+RSpec.describe ChromedriverScreenshot::Tile do
   context "#screenshot" do
     subject { new_tile.screenshot }
     before(:each) do

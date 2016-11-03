@@ -1,6 +1,4 @@
-require "spec_helper"
-
-describe ChromedriverScreenshot::Page do
+RSpec.describe ChromedriverScreenshot::Page do
   context "#initialize" do
     subject { ChromedriverScreenshot::Page.new }
 

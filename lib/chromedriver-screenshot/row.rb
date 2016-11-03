@@ -43,7 +43,7 @@ module ChromedriverScreenshot
       platform = ChromedriverScreenshot::Platforms.platform
 
       new_boundary = platform.window_width
-      while new_boundary < platform.window_width
+      while new_boundary < platform.page_width
         column_boundary_ary << new_boundary
         new_boundary += platform.window_width
       end
