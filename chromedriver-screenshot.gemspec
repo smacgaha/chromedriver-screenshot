@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "rspec", "~> 3.2"
   s.add_development_dependency "cucumber", "~> 2.4.0"
+  s.add_development_dependency "rake", "~> 11.3.0"
 end
