@@ -1,3 +1,6 @@
+# stores logs from tests
+build/
+
 *.gem
 *.rbc
 /.config
@@ -8,11 +11,6 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
-
-## Specific to RubyMotion:
-.dat*
-.repl_history
-build/
 
 ## Documentation cache and generated files:
 /.yardoc/
