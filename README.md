@@ -1,4 +1,8 @@
 # chromedriver-screenshot
+
+[![Gem Version](https://badge.fury.io/rb/chromedriver-screenshot.svg)](https://rubygems.org/gems/chromedriver-screenshot)
+[![Build Status](https://travis-ci.org/smacgaha/chromedriver-screenshot.png)](https://travis-ci.org/smacgaha/chromedriver-screenshot)
+
 Full page screenshots for Chrome in Selenium WebDriver
 
 # Usage
