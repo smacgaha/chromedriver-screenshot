@@ -1,3 +1,7 @@
+## 0.3.0 (December 6, 2016)
+
+- Upgraded to Selenium 3.0
+
 ## 0.2.4 (November 3, 2016)
 
 - Added suggested default settings for RSpec
