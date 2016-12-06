@@ -9,27 +9,27 @@ module ChromedriverScreenshot
     end
 
     def page_width
-      @page_width ||= @bridge.executeScript("return document.body.scrollWidth")
+      @page_width ||= execute_script("return document.body.scrollWidth")
     end
 
     def page_height
-      @page_height ||= @bridge.executeScript("return document.body.scrollHeight")
+      @page_height ||= execute_script("return document.body.scrollHeight")
     end
 
     def window_width
-      @window_width ||= @bridge.executeScript("return document.documentElement.clientWidth")
+      @window_width ||= execute_script("return document.documentElement.clientWidth")
     end
 
     def window_height
-      @window_height ||= @bridge.executeScript("return document.documentElement.clientHeight")
+      @window_height ||= execute_script("return document.documentElement.clientHeight")
     end
 
     def window_x
-      @bridge.executeScript("return window.scrollX")
+      execute_script("return window.scrollX")
     end
 
     def window_y
-      @bridge.executeScript("return window.scrollY")
+      execute_script("return window.scrollY")
     end
 
     def screenshot
@@ -37,7 +37,7 @@ module ChromedriverScreenshot
     end
 
     def scroll_to(x, y)
-      @bridge.executeScript("window.scrollTo(#{x}, #{y})")
+      execute_script("window.scrollTo(#{x}, #{y})")
       sleep 1 # don't know why this is necessary
     end
 
@@ -45,6 +45,10 @@ module ChromedriverScreenshot
 
     def initialize(bridge)
       @bridge = bridge
+    end
+
+    def execute_script(script)
+      @bridge.execute_script(script)
     end
   end
 end

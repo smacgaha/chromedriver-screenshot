@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency "oily_png", "~> 1.2"
-  s.add_dependency "selenium-webdriver", "~> 2.0"
+  s.add_dependency "selenium-webdriver", "~> 3.0"
 
   s.add_development_dependency "rspec", "~> 3.2"
   s.add_development_dependency "cucumber", "~> 2.4.0"

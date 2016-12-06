@@ -21,8 +21,8 @@ module Selenium
   module WebDriver
     module Remote
       class Bridge
-        alias_method :window_screenshot, :getScreenshot
-        def getScreenshot
+        alias_method :window_screenshot, :screenshot
+        def screenshot
           if browser == :chrome && ChromedriverScreenshot.take_full_screenshots
             ChromedriverScreenshot::Platforms.create_platform(self)
 
