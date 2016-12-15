@@ -15,11 +15,11 @@ You can switch to the old screenshot behavior by changing the `take_full_screens
     ChromedriverScreenshot.take_full_screenshots = false
 
 # Known issues:
-0. Screenshots on Retina displays quadruple in size because Apple is a piece of shit. As a result, screenshots are cropped incorrectly.
+0. Screenshots on Retina displays quadruple in size. As a result, screenshots are cropped incorrectly.
 
 # TODO:
 0. Better inheritance/monkeypatching
-0. Find a solution to the Retina bullshit
+0. Find a solution to screenshots on Retina
 0. Refactor singleton platforms class
 0. Refactor ChunkyPNG method
 0. Add e2e tests
