@@ -1,5 +1,7 @@
 module ChromedriverScreenshot
   class Platforms
+    WINDOW_WIDTH_SCRIPT = "return document.documentElement.clientWidth"
+    WINDOW_HEIGHT_SCRIPT = "return document.documentElement.clientHeight"
     def self.platform
       @platform
     end
@@ -17,11 +19,11 @@ module ChromedriverScreenshot
     end
 
     def window_width
-      @window_width ||= execute_script("return document.documentElement.clientWidth")
+      @window_width ||= execute_script WINDOW_WIDTH_SCRIPT
     end
 
     def window_height
-      @window_height ||= execute_script("return document.documentElement.clientHeight")
+      @window_height ||= execute_script WINDOW_HEIGHT_SCRIPT
     end
 
     def window_x

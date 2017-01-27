@@ -10,8 +10,5 @@ end
 
 Then(/^the screenshot matches the stored single window image$/) do
   expected_screenshot_path = File.join(support_directory, "fixtures", "single_window_image", "expected_screenshot.png")
-  expected_screenshot = File.read(expected_screenshot_path)
-  actual_screenshot = File.read(@actual_screenshot_path)
-
-  expect(actual_screenshot).to eql expected_screenshot
+  Image.new(@actual_screenshot_path).should_match(expected_screenshot_path)
 end

@@ -1,6 +1,7 @@
 ## Unreleased
 
 - Transfer ownership to The Orchard
+- Implement Selenium UI testing using Cucumber
 
 ## 0.3.0 (December 6, 2016)
 
