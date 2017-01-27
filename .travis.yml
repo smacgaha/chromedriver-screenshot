@@ -2,6 +2,9 @@ language: ruby
 dist: trusty
 rvm:
   - 2.2
+gemfile:
+  - gemfiles/selenium_2.gemfile
+  - gemfiles/selenium_3.gemfile
 cache: bundler
 before_script:
   - export CHROME_BIN=/usr/bin/google-chrome
