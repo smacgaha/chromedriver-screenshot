@@ -4,7 +4,7 @@ module StepHelpers
   end
 
   def logs_directory
-    File.join(support_directory, "..", "..", "build", "cucumber")
+    File.join(support_directory, '..', '..', 'build', 'cucumber')
   end
 end
 

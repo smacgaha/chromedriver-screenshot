@@ -1,0 +1,16 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  DisplayCopNames: true
+
+# This conflicts with Style/MultilineIfModifier
+Style/GuardClause:
+  Enabled: false
+
+# This has a bug, and is of questionable purpose
+Style/VariableNumber:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude: 
+    - spec/**/*

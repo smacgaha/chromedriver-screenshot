@@ -7,13 +7,15 @@ class Image
   # consider turning this into a custom matcher instead
   def should_match(image_path_to_compare, max_difference: 0.10)
     image_difference = difference_from(image_path_to_compare)
-    fail(
-      "Images don't match!\n"\
-      "  Expected image: #{@path}\n"\
-      "  Actual image: #{image_path_to_compare}\n"\
-      "  Difference: #{image_difference}\n"\
-      "  Threshold: #{max_difference}"
-    ) unless image_difference < max_difference
+    unless image_difference < max_difference
+      raise(
+        "Images don't match!\n"\
+        "  Expected image: #{@path}\n"\
+        "  Actual image: #{image_path_to_compare}\n"\
+        "  Difference: #{image_difference}\n"\
+        "  Threshold: #{max_difference}"
+      )
+    end
   end
 
   private
@@ -23,17 +25,22 @@ class Image
 
     assert_dimensions_match(image_to_compare)
 
-    _, diff_metric = @image.compare_channel(image_to_compare, Magick::MeanSquaredErrorMetric)
+    _, diff_metric = @image.compare_channel(
+      image_to_compare,
+      Magick::MeanSquaredErrorMetric
+    )
     diff_metric
   end
 
   def assert_dimensions_match(other_image)
     base_dims = [@image.columns, @image.rows]
     compared_dims = [other_image.columns, other_image.rows]
-    fail(
-      "images do not match!\n"\
-      "Base image: #{base_dims}\n"\
-      "Compared image: #{compared_dims}"
-    ) if base_dims != compared_dims
+    if base_dims != compared_dims
+      raise(
+        "images do not match!\n"\
+        "Base image: #{base_dims}\n"\
+        "Compared image: #{compared_dims}"
+      )
+    end
   end
 end

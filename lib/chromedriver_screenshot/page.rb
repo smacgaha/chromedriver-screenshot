@@ -6,19 +6,18 @@ module ChromedriverScreenshot
     end
 
     def full_screenshot
-      rows = @rows.map { |row| row.screenshot }
+      rows = @rows.map(&:screenshot)
 
       return rows.first if rows.size == 1 # don't need to process w/ Chunky
 
       page_height = rows.inject(0) do |height, row|
-        height += row.height
+        height + row.height
       end
       page_width = rows.first.width # assume all rows have same width
       screenshot = ChunkyPNG::Image.new(page_width, page_height)
 
       image_row = 0
       rows.each do |row|
-        row_height = row.height - 1
         (0..row.height - 1).each do |row_y|
           new_image_row = row.row(row_y)
           screenshot.replace_row!(image_row + row_y, new_image_row)

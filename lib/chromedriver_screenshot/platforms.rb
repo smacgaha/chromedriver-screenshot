@@ -1,13 +1,15 @@
 module ChromedriverScreenshot
   class Platforms
-    BODY_CLIENT_WIDTH = "document.body.clientWidth"
-    DOCUMENT_CLIENT_WIDTH = "document.documentElement.clientWidth"
-    BODY_CLIENT_HEIGHT = "document.body.clientHeight"
-    DOCUMENT_CLIENT_HEIGHT = "document.documentElement.clientHeight"
-    WINDOW_WIDTH_SCRIPT = "return Math.min(#{BODY_CLIENT_WIDTH}, #{DOCUMENT_CLIENT_WIDTH})"
-    WINDOW_HEIGHT_SCRIPT = "return Math.min(#{BODY_CLIENT_HEIGHT}, #{DOCUMENT_CLIENT_HEIGHT})"
-    def self.platform
-      @platform
+    BODY_CLIENT_WIDTH = 'document.body.clientWidth'.freeze
+    DOCUMENT_CLIENT_WIDTH = 'document.documentElement.clientWidth'.freeze
+    BODY_CLIENT_HEIGHT = 'document.body.clientHeight'.freeze
+    DOCUMENT_CLIENT_HEIGHT = 'document.documentElement.clientHeight'.freeze
+    WINDOW_WIDTH_SCRIPT = \
+      "return Math.min(#{BODY_CLIENT_WIDTH}, #{DOCUMENT_CLIENT_WIDTH})".freeze
+    WINDOW_HEIGHT_SCRIPT = \
+      "return Math.min(#{BODY_CLIENT_HEIGHT}, #{DOCUMENT_CLIENT_HEIGHT})".freeze
+    class << self
+      attr_reader :platform
     end
 
     def self.create_platform(bridge, use_selenium_2_methods)
@@ -15,11 +17,11 @@ module ChromedriverScreenshot
     end
 
     def page_width
-      @page_width ||= execute_script("return document.body.scrollWidth")
+      @page_width ||= execute_script('return document.body.scrollWidth')
     end
 
     def page_height
-      @page_height ||= execute_script("return document.body.scrollHeight")
+      @page_height ||= execute_script('return document.body.scrollHeight')
     end
 
     def window_width
@@ -31,15 +33,15 @@ module ChromedriverScreenshot
     end
 
     def window_x
-      execute_script("return window.scrollX")
+      execute_script('return window.scrollX')
     end
 
     def window_y
-      execute_script("return window.scrollY")
+      execute_script('return window.scrollY')
     end
 
     def screenshot
-      @bridge.window_screenshot.unpack("m")[0]
+      @bridge.window_screenshot.unpack('m')[0]
     end
 
     def scroll_to(x, y)
