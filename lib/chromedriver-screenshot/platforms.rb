@@ -6,8 +6,8 @@ module ChromedriverScreenshot
       @platform
     end
 
-    def self.create_platform(bridge)
-      @platform = new(bridge)
+    def self.create_platform(bridge, use_selenium_2_methods)
+      @platform = new(bridge, use_selenium_2_methods)
     end
 
     def page_width
@@ -45,12 +45,17 @@ module ChromedriverScreenshot
 
     private
 
-    def initialize(bridge)
+    def initialize(bridge, use_version_2)
       @bridge = bridge
+      @use_version_2 = use_version_2
     end
 
     def execute_script(script)
-      @bridge.execute_script(script)
+      if @use_version_2
+        @bridge.executeScript(script)
+      else
+        @bridge.execute_script(script)
+      end
     end
   end
 end
