@@ -1,5 +1,6 @@
 ## Unreleased
 
+- Fix dimension mismatches on React applications
 - Transfer ownership to The Orchard
 - Implement Selenium UI testing using Cucumber
 

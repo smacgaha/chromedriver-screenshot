@@ -1,7 +1,11 @@
 module ChromedriverScreenshot
   class Platforms
-    WINDOW_WIDTH_SCRIPT = "return document.documentElement.clientWidth"
-    WINDOW_HEIGHT_SCRIPT = "return document.documentElement.clientHeight"
+    BODY_CLIENT_WIDTH = "document.body.clientWidth"
+    DOCUMENT_CLIENT_WIDTH = "document.documentElement.clientWidth"
+    BODY_CLIENT_HEIGHT = "document.body.clientHeight"
+    DOCUMENT_CLIENT_HEIGHT = "document.documentElement.clientHeight"
+    WINDOW_WIDTH_SCRIPT = "return Math.min(#{BODY_CLIENT_WIDTH}, #{DOCUMENT_CLIENT_WIDTH})"
+    WINDOW_HEIGHT_SCRIPT = "return Math.min(#{BODY_CLIENT_HEIGHT}, #{DOCUMENT_CLIENT_HEIGHT})"
     def self.platform
       @platform
     end
