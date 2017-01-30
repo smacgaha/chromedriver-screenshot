@@ -1,8 +1,11 @@
-## Unreleased
+## 0.4.0 (January 30, 2017)
 
-- Fix dimension mismatches on React applications
+- Add support for both Selenium 2 and 3
 - Transfer ownership to The Orchard
 - Implement Selenium UI testing using Cucumber
+
+Bugs:
+  - Fix dimension mismatches on React applications
 
 ## 0.3.0 (December 6, 2016)
 
