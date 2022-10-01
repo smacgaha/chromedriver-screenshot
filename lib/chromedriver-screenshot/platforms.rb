@@ -38,6 +38,10 @@ module ChromedriverScreenshot
       execute_script("return window.scrollY")
     end
 
+    def device_pixel_ratio
+      execute_script("return window.devicePixelRatio")
+    end
+
     def screenshot
       @bridge.window_screenshot.unpack("m")[0]
     end

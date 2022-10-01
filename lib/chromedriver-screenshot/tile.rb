@@ -19,7 +19,9 @@ module ChromedriverScreenshot
       screenshot_blob = get_screenshot
       offset_x, offset_y = get_offset
       screenshot = ChunkyPNG::Image.from_blob(screenshot_blob)
-      screenshot.crop(offset_x, offset_y, @width, @height)
+      scale_factor = ChromedriverScreenshot::Platforms.platform.device_pixel_ratio
+
+      screenshot.crop(offset_x * scale_factor, offset_y * scale_factor, @width * scale_factor, @height * scale_factor)
     end
 
     private
